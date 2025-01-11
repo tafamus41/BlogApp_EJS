@@ -1,10 +1,10 @@
 <nav class="blog-pagination" aria-label="Pagination">
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
-        href="?page=1{% pageUrl %}">&laquo;</a>
+        href="?page=1{%= pageUrl %}">&laquo;</a>
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.previous ? '' : 'disabled' %}"
-        href="?page={% details.pages.previous + pageUrl %}">Prev</a>
+        href="?page={%= details.pages.previous + pageUrl %} ">Prev</a>
 
     {% if(details.pages.current > 3) { %}
     <span>...</span>
@@ -19,8 +19,9 @@
     {% if(details.pages.current < details.pages.total - 3) { %}
     <span>...</span>
     {% } %}
+
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '' : 'disabled' %}"
-    href="?page={% details.pages.next + pageUrl %}">Next</a>
+    href="?page={%= details.pages.next + pageUrl%} ">Next</a>
 
     <a class="btn btn-outline-primary rounded-pill {%= details.pages.next ? '' : 'disabled' %}"
     href="?page={%= details.pages.total + pageUrl %}">&raquo;</a>
