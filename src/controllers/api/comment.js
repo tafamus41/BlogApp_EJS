@@ -54,7 +54,7 @@ module.exports = {
         })
     },
 
-    deletee: async (req, res) => {
+    deleteComment: async (req, res) => {
         
 
         const data = await Comment.deleteOne({ _id: req.params.id })

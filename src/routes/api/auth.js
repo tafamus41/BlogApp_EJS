@@ -5,14 +5,14 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 
-const { list, create, read, update, deletee } = require('../controllers/sale');
-const { isStaff, isLogin } = require('../middlewares/permissions');
+const { login,refresh,logout } = require('../../controllers/api/auth');
+const { isStaff, isLogin } = require('../../middlewares/permissions');
 
 // URL: /sales
 
-router.route('/').get(isLogin, list).post(isLogin, create);
-
-router.route('/:id').get(isLogin, read).put(isStaff, update).patch(isStaff, update).delete(isStaff, deletee);
+router.post('/login', login)
+router.post('/refresh', refresh)
+router.post('/logout', logout)
 
 /* ------------------------------------------------------- */
 module.exports = router;

@@ -5,24 +5,13 @@
 
 const router = require("express").Router();
 
-const User = require("../../controllers/view/userController");
+const User = require("../../controllers/api/user");
 
 // ------------------------------------------
 // User
 // ------------------------------------------
 
-// Login/logout:
-// router.all("/login", User.login);
-// router.all("/logout", User.logout);
 
-// router.all("/", User.list);
-// router.all("/create", User.create);
-// router.all("/:id", User.read);
-// router.all("/:id/update", User.update);
-// router.all("/:id/delete", User.delete);
-
-// Login and logout routes
-// Handle login (POST for form submission)
 router.route("/login").post(User.login).get(User.login);
 // Handle logout (POST since it involves action)
 router.get("/logout", User.logout);

@@ -8,11 +8,17 @@ const router = require("express").Router();
 
 // URL: /
 
-// blogCategory:
-router.use("/category", require("./blog"));
-// blogPost:
-router.use("/post", require("./category"));
-// user:
+
+router.use("/category", require("./category"));
+
+router.use("/blog", require("./blog"));
+
 router.use("/user", require("./user"));
+
+router.use("/token", require("./token"));
+
+router.use("/comment", require("./comment"));
+
+router.use("/auth", require("./auth"));
 
 module.exports = router;

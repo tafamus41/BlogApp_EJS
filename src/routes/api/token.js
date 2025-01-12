@@ -5,9 +5,9 @@
 const router = require('express').Router()
 /* ------------------------------------------------------- */
 
-const { list, create, read, update, deletee } = require('../controllers/firm');
+const { list, create, read, update, deleteToken } = require('../../controllers/api/token');
 
-const { isAdmin } = require('../middlewares/permissions');
+const { isAdmin } = require('../../middlewares/permissions');
 
 
 
@@ -16,7 +16,7 @@ router.use(isAdmin)
 
 router.route('/').get(list).post(create);
 
-router.route('/:id').get(read).put(update).patch(update).delete(deletee);
+router.route('/:id').get(read).put(update).patch(update).
 
 /* ------------------------------------------------------- */
 module.exports = router;
