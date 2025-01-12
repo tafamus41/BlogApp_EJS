@@ -16,7 +16,7 @@ router.use(isAdmin)
 
 router.route('/').get(list).post(create);
 
-router.route('/:id').get(read).put(update).patch(update).
+router.route('/:id').get(read)
 
 /* ------------------------------------------------------- */
 module.exports = router;

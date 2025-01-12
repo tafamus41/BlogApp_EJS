@@ -12,7 +12,7 @@ const { isStaff } = require('../../middlewares/permissions');
 
 router.route('/').get(list).post(create);
 
-router.route('/:id').get(read).put(update).patch(update).delete(deletee);
+router.route('/:id').get(read)
 
 /* ------------------------------------------------------- */
 module.exports = router;

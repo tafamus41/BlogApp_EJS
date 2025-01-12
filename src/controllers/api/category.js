@@ -52,7 +52,7 @@ module.exports = {
         })
     },
 
-    deletee: async (req, res) => {
+    deleteCategory: async (req, res) => {
        
         const data = await Category.deleteOne({ _id: req.params.id })
 

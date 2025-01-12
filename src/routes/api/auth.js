@@ -6,7 +6,7 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 
 const { login,refresh,logout } = require('../../controllers/api/auth');
-const { isStaff, isLogin } = require('../../middlewares/permissions');
+// const { isStaff, isLogin } = require('../../middlewares/permissions');
 
 // URL: /sales
 

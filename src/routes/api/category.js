@@ -23,6 +23,6 @@ router.get("/:postId", Category.read);
 router.route("/:postId/update").get(Category.update).post(Category.update);
 
 // Delete a specific post by ID
-router.get("/:postId/delete", Category.delete);
+router.get("/:postId/delete", Category.deleteCategory);
 
 module.exports = router;
