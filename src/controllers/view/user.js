@@ -14,11 +14,7 @@ module.exports = {
     // const data = await User.find(search).sort(sort).skip(skip).limit(limit).populate(populate)
     const data = await res.getModelList(User);
 
-    res.status(200).send({
-      error: false,
-      count: data.length,
-      result: data,
-    });
+    res.render('index')
   },
 
   register: async (req, res) => {
