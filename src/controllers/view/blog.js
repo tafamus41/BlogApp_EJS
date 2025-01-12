@@ -11,7 +11,7 @@ module.exports = {
 
     list: async (req, res) => {
        
-        const data = await res.getModelList(Blog, {isPublished: true}, [
+        const datas = await res.getModelList(Blog, {isPublished: true}, [
                     
                     { path: 'userId', select: 'username' },
                     { path: 'categoryId', select: 'name' }
@@ -31,7 +31,7 @@ module.exports = {
             
             
             
-                res.render('index', { categories, data, details, pageUrl, })
+                res.render('index', { categories, datas, details, pageUrl, })
               },
             
 
