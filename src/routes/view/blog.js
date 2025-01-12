@@ -1,41 +1,32 @@
 "use strict";
 
-const BlogCategory = require("../../controllers/view/blogCategoryController");
+const Blog = require("../../controllers/view/blog");
 
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
 const router = require("express").Router();
 
-// ------------------------------------------
-// BlogCategory
-// ------------------------------------------
-// URL: /views/blog
 
-// router.all("/category", BlogCategory.list);
-// router.all("/category/create", BlogCategory.create);
-// router.all("/category/:categoryId", BlogCategory.read);
-// router.all("/category/:categoryId/update", BlogCategory.update);
-// router.all("/category/:categoryId/delete", BlogCategory.delete);
 
 // Get the list of categories
-router.get("/", BlogCategory.list);
+router.get("/", Blog.list);
 
 // Create a new category
-router.route("/create").post(BlogCategory.create).get(BlogCategory.create);
+router.route("/create").post(Blog.create).get(Blog.create);
 
 // Get a specific category by ID
-router.get("/:categoryId", BlogCategory.read);
+router.get("/:categoryId", Blog.read);
 
 // Update a specific category by ID
-router.put("/:categoryId/update", BlogCategory.update);
-router.get("/:categoryId/update", BlogCategory.update);
-router.patch("/:categoryId/update", BlogCategory.update);
+router.put("/:categoryId/update", Blog.update);
+router.get("/:categoryId/update", Blog.update);
+router.patch("/:categoryId/update", Blog.update);
 
 // Delete a specific category by ID
-router.delete("/:categoryId/delete", BlogCategory.delete);
+router.delete("/:categoryId/delete", Blog.deleteBlog);
 
 // Get the list of posts under a specific category
-router.get("/:categoryId/posts", BlogCategory.listCategoryPosts);
+// router.get("/:categoryId/posts", Blog.listCategoryPosts);
 
 module.exports = router;

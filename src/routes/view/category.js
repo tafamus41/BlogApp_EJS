@@ -4,34 +4,25 @@
 ------------------------------------------------------- */
 const router = require("express").Router();
 
-const BlogPost = require("../../controllers/view/blogPostController");
+const Category = require("../../controllers/view/category");
 
 // ------------------------------------------
-// BlogPost
+// Category
 // ------------------------------------------
-// URL: /views/blog
-
-// router.all("/post", BlogPost.list);
-// router.all("/post/create", BlogPost.create);
-// router.all("/post/:postId", BlogPost.read);
-// router.all("/post/:postId/update", BlogPost.update);
-// router.all("/post/:postId/delete", BlogPost.delete);
-
-// router.all("/category/:categoryId/posts", BlogPost.listCategoryPosts);
 
 // Get the list of posts
-router.get("/", BlogPost.list);
+router.get("/", Category.list);
 
 // Create a new post
-router.route("/create").get(BlogPost.create).post(BlogPost.create);
+router.route("/create").get(Category.create).post(Category.create);
 
 // Get a specific post by ID
-router.get("/:postId", BlogPost.read);
+router.get("/:postId", Category.read);
 
 // Update a specific post by ID
-router.route("/:postId/update").get(BlogPost.update).post(BlogPost.update);
+router.route("/:postId/update").get(Category.update).post(Category.update);
 
 // Delete a specific post by ID
-router.get("/:postId/delete", BlogPost.delete);
+router.get("/:postId/delete", Category.delete);
 
 module.exports = router;
