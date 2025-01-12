@@ -48,7 +48,7 @@ app.use((req, res, next) => {
 
 // HomePage:
 app.all("/", (req, res) => {
-  res.redirect("/blog/post");
+  res.redirect("/blog");
   // res.send('<h1>Welcome to Blog APP</h1>')
 });
 
