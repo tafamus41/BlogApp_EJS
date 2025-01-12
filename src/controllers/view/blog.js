@@ -4,23 +4,36 @@
 ------------------------------------------------------- */
 
 const Blog = require('../../models/blog');
+const Category = require('../../models/category');
+const removeQueryParam = require("../../helpers/removeQueryParam");
 
 module.exports = {
 
     list: async (req, res) => {
        
-
-        const data = await res.getModelList(Blog, {}, [
+        const data = await res.getModelList(Blog, {isPublished: true}, [
+                    
+                    { path: 'userId', select: 'username' },
+                    { path: 'categoryId', select: 'name' }
+                ])
+                const categories = await Category.find({})
+          
+                const details = await res.getModelListDetails(Blog, { isPublished: true })
             
-            { path: 'brandId', select: 'name' }
-        ])
-
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Blog),
-            data
-        })
-    },
+                let pageUrl = '';
+                const queryString = req.originalUrl.split("?")[1]
+            
+                if (queryString) {
+                  pageUrl = removeQueryParam(queryString, "page")
+                }
+            
+                pageUrl = pageUrl ? "&" + pageUrl : "";
+            
+            
+            
+                res.render('index', { categories, data, details, pageUrl, })
+              },
+            
 
     // CRUD:
     create: async (req, res) => {
