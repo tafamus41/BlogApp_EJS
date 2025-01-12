@@ -14,7 +14,7 @@ const User = require("../../controllers/api/user");
 
 router.route("/login").post(User.login).get(User.login);
 // Handle logout (POST since it involves action)
-router.get("/logout", User.logout);
+router.route("/logout").get(User.logout);
 
 // User management routes
 // Get the list of users
