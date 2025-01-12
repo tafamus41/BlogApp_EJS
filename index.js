@@ -53,7 +53,7 @@ app.all("/", (req, res) => {
 });
 
 // Routes: // VIEWS:
-// app.use("/blog", require("./src/routes/view"));
+app.use("/blog", require("./src/routes/view"));
 
 // Routes: // API:
 app.use("/api/blog", require("./src/routes/api"));

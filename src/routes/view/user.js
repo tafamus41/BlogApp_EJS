@@ -24,9 +24,9 @@ router.route("/register").post(User.register).get(User.register);
 // Get a specific user by ID
 router.get("/:id", User.read);
 // Update a specific user by ID
-router.put("/:id/update", User.update);
-router.patch("/:id/update", User.update);
+// router.put("/:id/update", User.update);
+// router.patch("/:id/update", User.update);
 // Delete a specific user by ID
-router.delete("/:id/delete", User.delete);
+// router.delete("/:id/delete", User.delete);
 
 module.exports = router;
