@@ -1,27 +1,57 @@
-{% posts.forEach(post => { %}
-<article class="blog-post">
-    <h2 class="display-5 mb-1">
-        <a href="/blog/post/{%= post._id %} " class="link-body-emphasis text-decoration-none">
-            {%= post.title %}
-        </a>
-    </h2>
-    <p class="blog-post-meta">
-        {%= post.createdAt.toUTCString() %}
-    </p>
-
-    <img src="{%= post.imageUrl %}" alt="{%= post.title %}" style="width: 180px; float:left; margin: 0px 15px 15px 0px">
-
-    {%= post.content.substring(0, 500) %}
-    <span class="text-primary">...read more</span>
-
-    {% if(user) { %}
-
-    <div class="admin-area text-end">
-        <a class="btn btn-sm btn-primary" href="/blog/post/{%= post._id %}/update">Update</a>
-        <a class="btn btn-sm btn-danger" href="/blog/post/{%= post._id %}/delete"
-            onclick="return confirm('Are you sure?')">Delete</a>
+<div class="card" style="max-width: 345px">
+  <div class="card-header d-flex justify-content-between">
+    <div
+      class="avatar"
+      style="
+        background-color: red;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color:white
+      "
+    >MS</div>
+    <div class="card-title">
+      <h5>deneme</h5>
+      <h6>test</h6>
     </div>
-    {% } %}
+    <div aria-label="settings">
+      <a href="#" class="material-icons">more_vert</a>
+    </div>
+  </div>
 
-</article>
-{% }) %}
+  <img src="" alt="" style="height: 194px; width: 100%" />
+
+  <div class="card-content">
+    <p></p>
+  </div>
+
+  <div class="card-actions d-flex justify-content-between">
+    <div>
+      <button aria-label="add to favorites">
+        <i class="material-icons">favorite</i>
+      </button>
+      <button aria-label="share">
+        <i class="material-icons">share</i>
+      </button>
+    </div>
+    <div>
+      <button class="expand-more" aria-label="show more">
+        <i class="material-icons">expand_more</i>
+      </button>
+    </div>
+  </div>
+
+  <div class="collapse">
+    <div class="card-content">
+      <h6>Method:</h6>
+      <p>
+        Heat 1/2 cup of the broth in a pot until simmering, add saffron and set
+        aside for 10 minutes.
+      </p>
+      <!-- Add more method steps here -->
+    </div>
+  </div>
+</div>
