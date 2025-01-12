@@ -11,7 +11,7 @@ const router = require("express").Router();
 
 router.use("/category", require("./category"));
 
-router.use("/blog", require("./blog"));
+router.use("/", require("./blog"));
 
 router.use("/user", require("./user"));
 
