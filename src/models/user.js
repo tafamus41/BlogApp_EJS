@@ -3,6 +3,7 @@
     NODEJS EXPRESS | CLARUSWAY FullStack Team
 ------------------------------------------------------- */
 const mongoose= require('mongoose')
+const passwordEncrypt=require('../helpers/passwordEncrypt')
 /* ------------------------------------------------------- *
 {
     "username": "test",

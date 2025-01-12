@@ -18,7 +18,7 @@ router.route("/logout").get(User.logout);
 
 // User management routes
 // Get the list of users
-router.get("/", User.list);
+router.get("/", User.list)
 // Create a new user
 router.route("/register").post(User.register).get(User.register);
 // Get a specific user by ID
