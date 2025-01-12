@@ -9,13 +9,15 @@ const removeQueryParam = require("../../helpers/removeQueryParam");
 
 module.exports = {
   list: async (req, res) => {
-    const datas = await res.getModelList(Blog, { isPublished: true }, [
-      { path: "userId", select: "username" },
-      { path: "categoryId", select: "name" },
-    ]);
+    const datas = await res.getModelList(Blog,{ isPublish: true })
+    // , , [
+    //   { path: "userId", select: "username" },
+    //   { path: "categoryId", select: "name" },
+    // ]);
+    console.log(datas)
     const categories = await Category.find({});
 
-    const details = await res.getModelListDetails(Blog, { isPublished: true });
+    const details = await res.getModelListDetails(Blog, { isPublish: true });
 
     let pageUrl = "";
     const queryString = req.originalUrl.split("?")[1];
