@@ -53,7 +53,7 @@ module.exports = {
         })
     },
 
-    delete: async (req, res) => {
+    deleteToken: async (req, res) => {
         
         const data = await Token.deleteOne({ _id: req.params.id })
 
