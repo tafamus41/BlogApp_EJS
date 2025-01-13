@@ -148,20 +148,12 @@ module.exports = async () => {
         categoryId: Kategory._id,
         title: `Sample ${category} Post -${c}`,
         content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, voluptate quaerat harum quos quis atque tenetur voluptatem quod exercitationem, neque aliquam libero temporibus sint odio ratione sed, officia dolorum ad.
-      Sit ab sint quae facere nam autem modi exercitationem, accusantium alias in inventore optio, ratione impedit earum culpa eveniet perferendis unde. Nihil atque, tempore ullam at soluta rerum natus voluptatibus?
-      Error, labore aliquid delectus incidunt odio nostrum. Perferendis fuga ut animi corporis, beatae quibusdam porro vel iure exercitationem provident id deleniti nostrum eos unde possimus, quas ipsam non error voluptas.
-      Explicabo cumque quaerat ad, placeat rem autem consequatur, voluptatum sit iste sapiente dolore natus est, unde sunt! Aperiam at hic nisi nihil deserunt et. Exercitationem aperiam dicta facilis obcaecati recusandae?
-      Aliquid quam doloribus alias suscipit, atque nostrum magnam neque accusantium soluta eum iure distinctio fugiat inventore nam velit non sit maxime nulla minus at! Excepturi voluptas quae aliquam perferendis accusantium!
-      Explicabo qui fugit inventore omnis veniam adipisci dolorum atque unde, reiciendis saepe odio sit perspiciatis voluptates dolores quis similique neque ratione obcaecati! Vero ipsa, delectus beatae reprehenderit eum inventore recusandae.
-      Natus, vero itaque fugiat architecto officiis nisi ducimus cupiditate et placeat voluptas excepturi? Odio pariatur blanditiis velit maiores aliquam rem illo suscipit vel atque architecto. Voluptas eaque totam asperiores perspiciatis?
-      Mollitia, incidunt. Molestiae delectus, distinctio officiis et sequi iusto ducimus. Sequi mollitia consequatur facilis enim sapiente minus possimus neque laborum, iure, sint dolore accusantium esse in aliquid. Dolorem, deserunt sint.
-      Eos temporibus aliquam repudiandae ducimus nam asperiores explicabo accusamus in, recusandae doloremque illum voluptates atque, dolor numquam omnis iusto, esse praesentium odio ad fuga mollitia voluptate? Quis odio quasi cum!
-      Odit blanditiis ducimus corrupti ullam eos impedit maxime laudantium beatae quibusdam! Sapiente quasi dicta fugiat est cumque harum voluptatibus quo alias laudantium, dolore nobis numquam. Voluptate eveniet vero sequi asperiores.`,
-        isPublished: Boolean(c % 8),
+      Sit ab sint quae facere nam autem modi exercitationem, accusantium alias in inventore optio, ratione impedit earum culpa eveniet perferendis unde. Nihil atque, tempore ullam at soluta rerum natus voluptatibus?`,
+        isPublish: Boolean(c % 8),
         createdAt: getRandomDate(),
-        imageUrl: images.at(c % 7),
-        likedUsers: abc,
-        visitedUsers: abc,
+        image: images.at(c % 7),
+        likes: abc,
+        countOfVisitors: abc,
       };
       await Blog.create(newBlog);
       n = n + 1;
