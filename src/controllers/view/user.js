@@ -7,13 +7,9 @@
 
 const User = require("../../models/user");
 
-
 module.exports = {
   list: async (req, res) => {
-    // const data = await User.find()
-    // const data = await User.find(search).sort(sort).skip(skip).limit(limit).populate(populate)
     const data = await res.getModelList(User);
-
     res.render('index')
   },
 
@@ -28,8 +24,7 @@ module.exports = {
   },
 
   read: async (req, res) => {
-    // req.params.userId
-    // const data = await User.findById(req.params.userId)
+    
     const data = await User.findOne({ _id: req.params.userId });
 
     res.status(200).send({
@@ -39,9 +34,7 @@ module.exports = {
   },
 
   update: async (req, res) => {
-    // const data = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true }) // return new-data
-    // const data = await User.updateOne({ _id: req.params.userId }, req.body)
-    const data = await User.updateOne({ _id: req.params.userId }, req.body, {
+        const data = await User.updateOne({ _id: req.params.userId }, req.body, {
       runValidators: true,
     });
 
@@ -53,20 +46,13 @@ module.exports = {
     });
   },
 
-  deleteCategory: async (req, res) => {
-    const data = await User.deleteOne({ _id: req.params.userId });
-
-    res.sendStatus(data.deletedCount >= 1 ? 204 : 404);
-  },
-
   login: async (req, res) => {
 
     if (req.method == 'POST') {
       const { email, password } = req.body;
 
       if (email && password) {
-        // const user = await User.findOne({ email: email, password: passwordEncrypt(password) })
-        // No need passwordEncrypt, because using "set" in model:
+       
         const user = await User.findOne({ email: email, password: password });
 
         if (user) {
