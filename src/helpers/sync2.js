@@ -95,7 +95,7 @@ module.exports = async () => {
     ...users,
   ]);
   users = await User.find({});
-  
+
   const categories = [
     "World",
     "Technology",
