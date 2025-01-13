@@ -2,36 +2,68 @@
 </div>
 <!-- main start -->
 <main class="container">
-    <div class="row g-5">
-        <div class="col-md-12 p-3">
-            <!-- BlogPost Read -->
-            {% if(user) { %}
-            
-            <div class="admin-area text-end">
-                <a class="btn btn-sm btn-primary" href="">Update</a>
-                <a class="btn btn-sm btn-danger" href=""
-                    onclick="return confirm('Are you sure?')">Delete</a>
-                Published: 
+    <div class="row g-5 d-flex align-items-center justify-content-center mt-5">
+        <div class="col-md-4">
+            <div class="card" style="max-width: 345px">
+              <div class="card-header d-flex justify-content-between">
+                <div
+                  class="avatar"
+                  style="
+                    background-color: red;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    color: white;
+                  "
+                >
+                  MS
+                </div>
+                <div class="card-title">
+                  <a href="/blog/{%= data._id %}" class="link-body-emphasis text-decoration-none fs-5 ">{%= data.title %}</a>
+                  
+                </div>
+                <div aria-label="settings">
+                  <a href="#" class="material-icons">more_vert</a>
+                </div>
+              </div>
+          
+              <img src="{%= data.image %}" alt="{%= data.title %}" style="height: 194px; width: 100%" />
+          
+              <div class="card-content">
+                <p>{%= data.content.substring(0, 200) %}</p>
+              </div>
+          
+              <div class="card-actions d-flex justify-content-between">
+                <div>
+                  <button aria-label="add to favorites">
+                    <i class="material-icons">favorite</i>
+                  </button>
+                  <button aria-label="share">
+                    <i class="material-icons">share</i>
+                  </button>
+                </div>
+                <div>
+                  <button class="expand-more" aria-label="show more">
+                    <i class="material-icons">expand_more</i>
+                  </button>
+                </div>
+              </div>
+          
+              <div class="collapse">
+                <div class="card-content">
+                  <h6>Method:</h6>
+                  <p>
+                    Heat 1/2 cup of the broth in a pot until simmering, add saffron and
+                    set aside for 10 minutes.
+                  </p>
+                  <!-- Add more method steps here -->
+                </div>
+              </div>
             </div>
-
-            {% } %}
-
-            <p>
-                <a class="btn btn-sm btn-secondary" href="/blog/post">Go Home</a>
-            </p>
-            
-            <article class="blog-post">
-                <a href=""># </a>
-                <h2 class="display-5 mb-1">
-                    <a href="" class="link-body-emphasis text-decoration-none"></a>
-                </h2>
-                <p class="blog-post-meta"></p>
-                <img src="" alt=""
-                    style="width: 400px; height:180px; float:left; margin: 0px 15px 15px 0px ">
-
-            
-            </article>
-        </div>
+          </div>
     </div>
 </main>
 <!-- main end -->

@@ -47,7 +47,7 @@ module.exports = {
       { path: "categoryId", select: "name" },
     ]);
 
-    res.render('blogRead');
+    res.render('blogRead',{data});
   },
 
   update: async (req, res) => {
