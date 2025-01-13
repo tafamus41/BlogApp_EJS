@@ -9,11 +9,11 @@ const removeQueryParam = require("../../helpers/removeQueryParam");
 
 module.exports = {
   list: async (req, res) => {
-    const datas = await res.getModelList(Blog,{ isPublish: true })
-    // , , [
-    //   { path: "userId", select: "username" },
-    //   { path: "categoryId", select: "name" },
-    // ]);
+    const datas = await res.getModelList(Blog,{ isPublish: true }
+    , [
+      { path: "userId", select: "username" },
+      { path: "categoryId", select: "name" },
+    ]);
     
     const categories = await Category.find({});
 
@@ -43,13 +43,11 @@ module.exports = {
 
   read: async (req, res) => {
     const data = await Blog.findOne({ _id: req.params.id }).populate([
-      { path: "brandId", select: "name" },
+      { path: "userId", select: "username" },
+      { path: "categoryId", select: "name" },
     ]);
 
-    res.status(200).send({
-      error: false,
-      data,
-    });
+    res.render('blogRead');
   },
 
   update: async (req, res) => {
