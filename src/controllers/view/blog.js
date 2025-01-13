@@ -14,7 +14,7 @@ module.exports = {
     //   { path: "userId", select: "username" },
     //   { path: "categoryId", select: "name" },
     // ]);
-    console.log(datas)
+    
     const categories = await Category.find({});
 
     const details = await res.getModelListDetails(Blog, { isPublish: true });

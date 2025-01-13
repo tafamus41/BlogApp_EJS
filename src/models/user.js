@@ -70,8 +70,8 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre(['save', 'updateOne'], function (next) {
 
-    // console.log('this is from pre middleware');
-    // console.log(this);
+
+    
 
     // updateOne: _update, save: this
     const data = this?._update ?? this

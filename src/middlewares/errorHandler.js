@@ -15,7 +15,7 @@ module.exports = (err, req, res, next) => {
         body: req.body,
     }
 
-    // console.log(req.url)
+
 
     if (req.url.startsWith('/api')) {
 
