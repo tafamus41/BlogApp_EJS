@@ -95,21 +95,7 @@ module.exports = async () => {
     ...users,
   ]);
   users = await User.find({});
-
-  function getRandomUniqueIds(key) {
-    const uniqueIds = [];
-    const filteredUsers = users.filter((user, index) => index !== key);
-
-    while (uniqueIds.length < 25) {
-      const randomIndex = Math.floor(Math.random() * 500);
-      const randomUser = filteredUsers.at(randomIndex);
-
-      if (!uniqueIds.includes(randomUser._id.toString()))
-        uniqueIds.push(randomUser._id.toString());
-    }
-    return uniqueIds;
-  }
-
+  
   const categories = [
     "World",
     "Technology",
@@ -141,8 +127,7 @@ module.exports = async () => {
     });
 
     for (let c = 1; c < 49; c++) {
-      const abc = getRandomUniqueIds(n);
-
+      
       const newBlog = {
         userId: users.at(n)._id,
         categoryId: Kategory._id,
@@ -152,8 +137,6 @@ module.exports = async () => {
         isPublish: Boolean(c % 8),
         createdAt: getRandomDate(),
         image: images.at(c % 7),
-        likes: abc,
-        countOfVisitors: abc,
       };
       await Blog.create(newBlog);
       n = n + 1;
