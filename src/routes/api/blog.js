@@ -16,8 +16,9 @@ router.get("/", Blog.list);
 router.route("/create").post(Blog.create).get(Blog.create);
 
 // Get a specific category by ID
-router.get("/:categoryId", Blog.read);
+// router.get("/:categoryId", Blog.read);
 router.get("/:id", Blog.deleteBlog);
+router.get("/:categoryId/delete", Blog.deleteBlogtoCategory);
 
 // Update a specific category by ID
 // router.put("/:categoryId/update", Blog.update);

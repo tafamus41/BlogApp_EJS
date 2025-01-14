@@ -17,12 +17,12 @@ router.get("/", Category.list);
 router.route("/create").get(Category.create).post(Category.create);
 
 // Get a specific post by ID
-router.get("/:postId", Category.read);
+router.get("/:id", Category.read);
 
 // Update a specific post by ID
-router.route("/:postId/update").get(Category.update).post(Category.update);
+router.route("/:id/update").get(Category.update).post(Category.update);
 
 // Delete a specific post by ID
-router.get("/:postId/delete", Category.deleteCategory);
+router.get("/:id/delete", Category.deleteCategory);
 
 module.exports = router;
