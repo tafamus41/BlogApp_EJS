@@ -1,84 +1,84 @@
-"use strict"
+"use strict";
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
 
-const Blog = require('../../models/blog');
+const Blog = require("../../models/blog");
 
 module.exports = {
+  list: async (req, res) => {
+    const data = await res.getModelList(Blog, {}, 
+    //     [
+    //   { path: "userId", select: "username" },
+    //   { path: "categoryId", select: "name" },
+    // ]
+);
 
-    list: async (req, res) => {
-       
+    console.log(data[0].categoryId)
+    console.log(typeof (data[0].categoryId))
 
-        const data = await res.getModelList(Blog, {}, [
-            
-            { path: 'userId', select: 'username' },
-            { path: 'categoryId', select: 'name' }
-        ])
+    res.status(200).send({
+      error: false,
+      details: await res.getModelListDetails(Blog),
+      data,
+    });
+  },
 
-        res.status(200).send({
-            error: false,
-            details: await res.getModelListDetails(Blog),
-            data
-        })
-    },
+  // CRUD:
+  create: async (req, res) => {
+    const data = await Blog.create(req.body);
 
-    // CRUD:
-    create: async (req, res) => {
-       
+    res.status(201).send({
+      error: false,
+      data,
+    });
+  },
 
-        const data = await Blog.create(req.body)
+  read: async (req, res) => {
+    const data = await Blog.findOne({ _id: req.params.id }).populate([
+      { path: "brandId", select: "name" },
+    ]);
 
-        res.status(201).send({
-            error: false,
-            data
-        })
-    },
+    res.status(200).send({
+      error: false,
+      data,
+    });
+  },
 
-    read: async (req, res) => {
-       
+  update: async (req, res) => {
+    const data = await Blog.updateOne({ _id: req.params.id }, req.body, {
+      runValidators: true,
+    });
 
-        const data = await Blog.findOne({ _id: req.params.id }).populate([
-            
-            { path: 'brandId', select: 'name' }
-        ]);
+    res.status(202).send({
+      error: false,
+      data,
+      new: await Blog.findOne({ _id: req.params.id }),
+    });
+  },
 
-        res.status(200).send({
-            error: false,
-            data
-        })
-    },
+  deleteBlog: async (req, res) => {
+    const data = await Blog.deleteOne({ _id: req.params.id });
 
-    update: async (req, res) => {
-        
-        const data = await Blog.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
-
-
-        res.status(202).send({
-            error: false,
-            data,
-            new: await Blog.findOne({ _id: req.params.id })
-        })
-    },
-
-    deleteBlog: async (req, res) => {
-       
-        const data = await Blog.deleteOne({ _id: req.params.id })
-
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: true,
-            message: 'Something went wrong, data might be deleted already.'
-        })
-    },
-    deleteBlogtoCategory: async (req, res) => {
-        const filter = { categoryId: req.params.id };
-        const data = await Blog.deleteMany(filter)
-console.log(data.length)
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: true,
-            message: 'Something went wrong, data might be deleted already.'
-        })
-    },
-
-   
-}
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: true,
+      message: "Something went wrong, data might be deleted already.",
+    });
+  },
+  deleteBlogtoCategory: async (req, res) => {
+    let filter;
+    if (req.params.categoryId == "null") {
+      filter = { categoryId: null };
+    } else {
+      filter = { categoryId: req.params.categoryId };
+    }
+    // console.log(filter)
+    // console.log(typeof filter)
+    // console.log(req.params.categoryId)
+    const data = await Blog.deleteMany(filter);
+    res.status(data.deletedCount ? 204 : 404).send({
+      error: true,
+      message: "Something went wrong, data might be deleted already.",
+    });
+  },
+};
