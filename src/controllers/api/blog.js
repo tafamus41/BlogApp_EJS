@@ -61,7 +61,7 @@ module.exports = {
         })
     },
 
-    deletee: async (req, res) => {
+    deleteBlog: async (req, res) => {
        
         const data = await Blog.deleteOne({ _id: req.params.id })
 
