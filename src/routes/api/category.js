@@ -14,7 +14,7 @@ const Category = require("../../controllers/api/category");
 router.get("/", Category.list);
 
 // Create a new post
-router.route("/create").get(Category.create).post(Category.create);
+router.route("/create").post(Category.create);
 
 // Get a specific post by ID
 router.get("/:id", Category.read);

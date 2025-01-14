@@ -47,45 +47,43 @@ module.exports = {
   },
 
   login: async (req, res) => {
-
-    if (req.method == 'POST') {
-      const { email, password } = req.body;
-
-      if (email && password) {
-       
-        const user = await User.findOne({ email: email, password: password });
-
-        if (user) {
-          // Set Session:
-          req.session = {
-            user: {
-              id: user.id,
-              email: user.email,
-              password: user.password,
-            },
-          };
-          // Set Cookie:
-          if (req.body?.rememberMe) {
-            // Set Cookie maxAge:
-            req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
+  
+          if (req.method == 'POST') {
+            const { email, password } = req.body;
+      
+            if (email && password) {
+             
+              const user = await User.findOne({ email: email, password: password });
+      
+              if (user) {
+                // Set Session:
+                req.session = {
+                  user: {
+                    id: user.id,
+                    email: user.email,
+                    password: user.password,
+                  },
+                };
+                // Set Cookie:
+                if (req.body?.rememberMe) {
+                  // Set Cookie maxAge:
+                  req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
+                }
+      
+                res.redirect('/blog')
+              } else {
+                res.errorStatusCode = 401;
+                throw new Error("Login parameters are not true.");
+              }
+            } else {
+              res.errorStatusCode = 401;
+              throw new Error("Email and Password are required.");
+            }
+      
+          } else {
+            res.render('loginForm')
           }
-
-          res.redirect('/blog')
-        } else {
-          res.errorStatusCode = 401;
-          throw new Error("Login parameters are not true.");
-        }
-      } else {
-        res.errorStatusCode = 401;
-        throw new Error("Email and Password are required.");
-      }
-
-    } else {
-      res.render('loginForm')
-    }
-
-
-  },
+        },
 
   logout: async (req, res) => {
     // Set session to null:

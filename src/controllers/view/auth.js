@@ -11,72 +11,7 @@ const jwt = require('jsonwebtoken')
 
 module.exports = {
 
-    login: async (req, res) => {
-       
-
-        const { username, password } = req.body
-
-        if (username && password) {
-
-            const user = await User.findOne({ username })
-
-            if (user && user.password == passwordEncrypt(password)) {
-
-                if (user.isActive) {
-
-                    /* TOKEN */
-
-                    let tokenData = await Token.findOne({ userId: user._id })
-
-                    if (!tokenData) {
-                        const tokenKey = passwordEncrypt(user._id + Date.now())
-                        tokenData = await Token.create({ userId: user._id, token: tokenKey })
-                    }
-
-                    /* TOKEN */
-
-                    /* JWT */
-
-                    const accessData = user.toJSON() // Valuable data.
-                    const accessTime = '1m'
-                    const accessToken = jwt.sign(accessData, process.env.ACCESS_KEY, { expiresIn: accessTime })
-                    
-                    const refreshData = { id: user._id, password: user.password } // Checkable data.
-                    const refreshTime = '3d'
-                    const refreshToken = jwt.sign(refreshData, process.env.REFRESH_KEY, { expiresIn: refreshTime })
-                    
-                    /* JWT */
-
-                    res.status(200).send({
-                        error: false,
-                        token: tokenData.token,
-                        bearer: {
-                            access: accessToken,
-                            refresh: refreshToken
-                        },
-                        user
-                    })
-
-                } else {
-
-                    res.errorStatusCode = 401
-                    throw new Error('This account is not active.')
-                }
-
-            } else {
-
-                res.errorStatusCode = 401
-                throw new Error('Wrong username or password.')
-            }
-
-        } else {
-
-            res.errorStatusCode = 401
-            throw new Error('Please enter username and password.')
-        }
-
-    },
-
+    
     refresh: async (req, res) => {
         
 

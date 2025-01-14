@@ -12,9 +12,9 @@ const User = require("../../controllers/api/user");
 // ------------------------------------------
 
 
-router.route("/login").post(User.login).get(User.login);
+// router.route("/login").post().get();
 // Handle logout (POST since it involves action)
-router.route("/logout").get(User.logout);
+// router.route("/logout").get(User.logout);
 
 // User management routes
 // Get the list of users

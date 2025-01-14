@@ -7,15 +7,12 @@ const Blog = require("../../models/blog");
 
 module.exports = {
   list: async (req, res) => {
-    const data = await res.getModelList(Blog, {}, 
-    //     [
-    //   { path: "userId", select: "username" },
-    //   { path: "categoryId", select: "name" },
-    // ]
+    const data = await res.getModelList(Blog, {},[
+    { path: "userId", select: "username" },
+    { path: "categoryId", select: "name" },
+    ]
 );
 
-    console.log(data[0].categoryId)
-    console.log(typeof (data[0].categoryId))
 
     res.status(200).send({
       error: false,
@@ -72,10 +69,7 @@ module.exports = {
     } else {
       filter = { categoryId: req.params.categoryId };
     }
-    // console.log(filter)
-    // console.log(typeof filter)
-    // console.log(req.params.categoryId)
-    const data = await Blog.deleteMany(filter);
+        const data = await Blog.deleteMany(filter);
     res.status(data.deletedCount ? 204 : 404).send({
       error: true,
       message: "Something went wrong, data might be deleted already.",

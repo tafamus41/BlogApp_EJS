@@ -15,7 +15,7 @@ const loginLimiter = require('../../middlewares/loginLimiter');
 
 router.route("/login").post(loginLimiter,User.login).get(User.login);
 // Handle logout (POST since it involves action)
-router.get("/logout", User.logout);
+// router.get("/logout", User.logout);
 
 // Get the list of users
 router.get("/", User.list);
