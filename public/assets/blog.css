@@ -37,11 +37,20 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.25rem;
   color: #727272;
 }
-button{
-margin:1px ;
- border:none; 
- background-color: white;
+button {
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
 }
+button:hover {
+  color:white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.material-icons{
+  padding: 3px;
+  margin: auto;
+}
+
 /* .favorite{
   color:red;
 } */
