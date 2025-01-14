@@ -6,13 +6,17 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 
 const { login,refresh,logout } = require('../../controllers/view/auth');
-const { isStaff, isLogin } = require('../../middlewares/permissions');
+const loginLimiter = require('../../middlewares/loginLimiter');
 
 // URL: /sales
 
-router.post('/login', login)
-router.post('/refresh', refresh)
-router.post('/logout', logout)
+router.route('/')
+    .post(loginLimiter, login)
 
+router.route('/refresh')
+    .get(refresh)
+
+router.route('/logout')
+    .post(logout)
 /* ------------------------------------------------------- */
 module.exports = router;
