@@ -6,13 +6,14 @@
 const router = require("express").Router();
 
 const User = require("../../controllers/view/user");
+const loginLimiter = require('../../middlewares/loginLimiter');
 
 // ------------------------------------------
 // User
 // ------------------------------------------
 
 
-router.route("/login").post(User.login).get(User.login);
+router.route("/login").post(loginLimiter,User.login).get(User.login);
 // Handle logout (POST since it involves action)
 router.get("/logout", User.logout);
 
