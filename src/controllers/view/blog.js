@@ -63,11 +63,8 @@ module.exports = {
   },
 
   deleteBlog: async (req, res) => {
-    const data = await Blog.deleteOne({ _id: req.params.id });
+    await Blog.deleteOne({ _id: req.params.id });
 
-    res.status(data.deletedCount ? 204 : 404).send({
-      error: true,
-      message: "Something went wrong, data might be deleted already.",
-    });
+    res.redirect('/blog')
   },
 };
