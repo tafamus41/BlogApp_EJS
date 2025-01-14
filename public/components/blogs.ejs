@@ -36,15 +36,19 @@
         <div class="card-actions d-flex justify-content-between">
           <div>
             <button aria-label="add to favorites">
-              <i class="material-icons">favorite</i>
+              <i class="material-icons favorite" onclick="heartBreaker()"
+                >favorite</i
+              >
             </button>
             <button aria-label="delete">
-              <i class="material-icons">delete</i>
+              <i class="material-icons" onclick="return confirm('Are you sure?')">delete</i>
             </button>
           </div>
           <div>
             <button class="expand-more" aria-label="show more">
-              <i class="material-icons">expand_more</i>
+              <i class="material-icons" onclick="toggleSection()"
+                >expand_more</i
+              >
             </button>
           </div>
         </div>

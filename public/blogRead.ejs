@@ -51,7 +51,7 @@
               >
             </button>
             <button aria-label="delete">
-              <i class="material-icons" onclick="handleDelete()">delete</i>
+              <i class="material-icons" onclick="return confirm('Are you sure?')">delete</i>
             </button>
           </div>
           <div>
@@ -90,9 +90,7 @@
     const likes = document.querySelector(".favorite");
     likes.classList.toggle("text-danger");
   }
-  function handleDelete(){
-    
-  }
+  
 </script>
 <!-- main end -->
 

@@ -12,4 +12,19 @@
         
     </div>
 </main>
+<script>
+    function toggleSection() {
+      const content = document.querySelector(".collapse");
+      if (content.style.display === "none") {
+        content.style.display = "block";
+      } else {
+        content.style.display = "none";
+      }
+    }
+    function heartBreaker() {
+      const likes = document.querySelector(".favorite");
+      likes.classList.toggle("text-danger");
+    }
+    
+  </script>
 {%- include('components/footer') %}
