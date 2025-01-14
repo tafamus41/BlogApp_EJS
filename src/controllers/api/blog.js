@@ -72,8 +72,8 @@ module.exports = {
     },
     deleteBlogtoCategory: async (req, res) => {
         const filter = { categoryId: req.params.id };
-        const data = await Blog.deleteMany({filter})
-
+        const data = await Blog.deleteMany(filter)
+console.log(data.length)
         res.status(data.deletedCount ? 204 : 404).send({
             error: true,
             message: 'Something went wrong, data might be deleted already.'
