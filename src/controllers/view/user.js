@@ -70,7 +70,7 @@ module.exports = {
             req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 3; // 3 Days
           }
 
-          res.redirect('/blog/post')
+          res.redirect('/blog')
         } else {
           res.errorStatusCode = 401;
           throw new Error("Login parameters are not true.");
