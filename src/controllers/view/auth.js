@@ -111,17 +111,9 @@ module.exports = {
     },
 
     logout: async (req, res) => {
+        // Set session to null:
+        req.session = null;
+        res.redirect('/blog/post')
         
-        const auth = req.headers?.authorization || null // Token ...tokenKey...
-        const tokenKey = auth ? auth.split(' ') : null // ['Token', '...tokenKey...']
-
-        const tokenData = await Token.deleteOne({ token: tokenKey[1] })
-
-        res.send({
-            error: false,
-            message: 'Logout was OK.',
-            data: tokenData
-        })
-    },
-
+      },
 }

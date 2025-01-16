@@ -44,14 +44,6 @@ module.exports = {
       result: data, // update infos
       newData: await User.findOne({ _id: req.params.userId }),
     });
-  },
-
-  
-  logout: async (req, res) => {
-    // Set session to null:
-    req.session = null;
-    res.redirect('/blog/post')
-    
-  },
+  }, 
 };
 
