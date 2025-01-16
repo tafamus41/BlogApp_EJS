@@ -5,16 +5,16 @@
 
 const Blog = require("../../models/blog");
 const Category = require("../../models/category");
+const Comment = require("../../models/comment");
 const removeQueryParam = require("../../helpers/removeQueryParam");
 
 module.exports = {
   list: async (req, res) => {
-    const datas = await res.getModelList(Blog,{ isPublish: true }
-    , [
+    const datas = await res.getModelList(Blog, { isPublish: true }, [
       { path: "userId", select: "username" },
       { path: "categoryId", select: "name" },
     ]);
-    
+
     const categories = await Category.find({});
 
     const details = await res.getModelListDetails(Blog, { isPublish: true });
@@ -46,8 +46,8 @@ module.exports = {
       { path: "userId", select: "username" },
       { path: "categoryId", select: "name" },
     ]);
-
-    res.render('blogRead',{data});
+    const comment = await Comment.find({blogId:req.params.id});
+    res.render("blogRead", { data,comment });
   },
 
   update: async (req, res) => {
@@ -65,6 +65,6 @@ module.exports = {
   deleteBlog: async (req, res) => {
     await Blog.deleteOne({ _id: req.params.id });
 
-    res.redirect('/blog')
+    res.redirect("/blog");
   },
 };
