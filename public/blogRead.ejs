@@ -65,13 +65,29 @@
         </div>
       </div>
 
-      <div class="collapse mt-5 ">
-        
-          <h6>Comments</h6>
-          <textarea rows="3" placeholder="Write a comment...">
-          </textarea> <br>
+      <div class="collapse mt-2 ">
+        <div class="d-flex flex-column">
+          <h6 class="text-center">Comments</h6>
+          <textarea rows="3" placeholder="Write a comment..."></textarea>
+          
+           <br>
           <input type="submit"/>
-        
+          <ul class="comments">
+            {% if(comments?.length > 0 ){ %}
+
+        {% comments.forEach(comment=>{ %}
+        <li class="comment">
+            {%= comment %}
+        </li>
+        {% }) %}
+
+        {% } else { %}
+        <p>No Comment Yet</p>
+        {% } %}
+            
+            <li class="comment">User2: Very informative, thank you!</li>
+        </ul>
+        </div>
       </div>
     </div>
   </div>
