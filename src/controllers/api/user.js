@@ -57,7 +57,7 @@ module.exports = {
     });
   },
 
-  delete: async (req, res) => {
+  deleteUser: async (req, res) => {
     const data = await User.deleteOne({ _id: req.params.userId });
 
     res.sendStatus(data.deletedCount >= 1 ? 204 : 404);

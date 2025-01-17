@@ -5,7 +5,7 @@
 
 const router = require("express").Router();
 
-const User = require("../../controllers/api/user");
+const {list,register,read,update} = require("../../controllers/api/user");
 
 // ------------------------------------------
 // User
@@ -18,11 +18,11 @@ const User = require("../../controllers/api/user");
 
 // User management routes
 // Get the list of users
-router.get("/", User.list)
+router.get("/", list)
 // Create a new user
-router.route("/register").post(User.register).get(User.register);
+router.route("/register").post(register).get(register);
 // Get a specific user by ID
-router.get("/:id", User.read);
+router.get("/:id", read);
 // Update a specific user by ID
 // router.put("/:id/update", User.update);
 // router.patch("/:id/update", User.update);
