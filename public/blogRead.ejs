@@ -28,7 +28,11 @@
           >
         </div>
         <div aria-label="settings">
-          <a href="#" class="material-icons link-body-emphasis text-decoration-none">more_vert</a>
+          <a
+            href="#"
+            class="material-icons link-body-emphasis text-decoration-none"
+            >more_vert</a
+          >
         </div>
       </div>
 
@@ -65,13 +69,25 @@
         </div>
       </div>
 
-      <div class="collapse mt-2 ">
+      <div class="collapse mt-2">
         <div class="d-flex flex-column">
           <h6 class="text-center">Comments</h6>
           <textarea rows="3" placeholder="Write a comment..."></textarea>
-           <br>
+          <br>
           <input type="submit"/>
-                  </div>
+          {% if(comments?.length > 0 ){ %}
+<ul class="comments">
+        {% comments.forEach(comment=>{ %}
+        <li class="nav-item nav-link link-body-emphasis">
+            {%= comment.comment %}
+        </li>
+        {% }) %}
+      </ul>
+        {% } else { %}
+        <p>No Comment yet</p>
+        {% } %}
+
+        </div>
       </div>
     </div>
   </div>
