@@ -46,8 +46,8 @@ module.exports = {
       { path: "userId", select: "username" },
       { path: "categoryId", select: "name" },
     ]);
-    const comment = await Comment.find({blogId:req.params.id});
-    res.render("blogRead", { data,comment });
+    // const comment = await Comment.find({blogId:req.params.id});
+    res.render("blogRead", { data });
   },
 
   update: async (req, res) => {
