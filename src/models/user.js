@@ -70,9 +70,6 @@ const UserSchema = new mongoose.Schema({
 
 UserSchema.pre(['save', 'updateOne'], function (next) {
 
-
-    
-
     // updateOne: _update, save: this
     const data = this?._update ?? this
 
