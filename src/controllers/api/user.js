@@ -12,7 +12,7 @@ module.exports = {
   list: async (req, res) => {
     // const data = await User.find()
     // const data = await User.find(search).sort(sort).skip(skip).limit(limit).populate(populate)
-    const data = await res.getModelList(User);
+    const data = await res.getModelList(User,{});
 
     res.status(200).send({
       error: false,
