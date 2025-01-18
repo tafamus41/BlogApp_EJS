@@ -34,6 +34,7 @@
         </div>
     
         <div class="card-actions d-flex justify-content-between">
+          {% if(user) { %}
           <div>
             <button aria-label="add to favorites">
               <i class="material-icons favorite" onclick="heartBreaker()"
@@ -44,6 +45,7 @@
               <i class="material-icons" onclick="return confirm('Are you sure?')">delete</i>
             </button>
           </div>
+          
           <div>
             <button class="expand-more" aria-label="show more">
               <i class="material-icons" onclick="toggleSection()"
@@ -51,6 +53,7 @@
               >
             </button>
           </div>
+          {% } %}
         </div>
     
         <div class="collapse">
