@@ -17,7 +17,7 @@
                         </tr>
                         <tr>
                             <td>Password</td>
-                            <td><input type="password" name="password" required class="form-control" value="aA*123456"></td>
+                            <td class="password-container"><input type="password" id="password" name="password" required class="form-control" value="aA*123456"><span id="togglePassword" class="eye-icon">&#128065;</span></td>
                         </tr>
                         <tr>
                             <td></td>
@@ -32,6 +32,17 @@
         </div>
     </div>
 </main>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+const password = document.querySelector('#password');
+
+togglePassword.addEventListener('click', () => {
+    // Toggle the type attribute
+    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+    password.setAttribute('type', type);
+
+});
+</script>
 <!-- main end -->
 
 {%- include('components/footer') %}

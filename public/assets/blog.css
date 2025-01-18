@@ -50,6 +50,23 @@ button:hover {
   padding: 3px;
   margin: auto;
 }
+.password-container {
+  position: relative;
+  display: inline-block;
+}
+
+#password {
+  padding-right: 30px; /* Make space for the eye icon */
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px; /* Adjust size as needed */
+}
 
 /* .favorite{
   color:red;
