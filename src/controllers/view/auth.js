@@ -112,7 +112,7 @@ module.exports = {
     logout: async (req, res) => {
         // Set session to null:
         req.session = null;
-        res.redirect('/blog/post')
+        res.redirect('/blog/')
         
       },
 }
