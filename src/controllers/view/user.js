@@ -16,7 +16,7 @@ module.exports = {
   register: async (req, res) => {
     const data = await User.create(req.body);
 
-    res.render("registerForm")
+    res.render('registerForm')
   },
 
   read: async (req, res) => {
