@@ -20,7 +20,7 @@ const loginLimiter = require('../../middlewares/loginLimiter');
 // Get the list of users
 router.get("/", User.list);
 // Create a new user
-router.route("/register").post(User.register).get(User.register)
+router.route("/register").get(User.register)
 // get(User.register);
 // Get a specific user by ID
 router.get("/:id", User.read);
